@@ -19,15 +19,12 @@ const ChallengeFour = ({ onPass }) => {
     useEffect(() => {
         async function fetchRiddles() {
             try {
-                const riddles = [];
 
-                for (let i = 9; i <= 14; i++) {
-                    const response = await fetch(`https://turkeyver-backend-production.up.railway.app/api/riddles/${i}`);
-                    const data = await response.json();
-                    riddles.push(data);
-                }
+                const response = await fetch(`https://turkeyver-backend-production.up.railway.app/api/riddles/tver`);
+                const data = await response.json();
+                console.log("data: ", data)
 
-                setRiddles(riddles);
+                setRiddles(data);
             } catch (err) {
                 console.error("An error occurred while fetching riddles:", err);
             }

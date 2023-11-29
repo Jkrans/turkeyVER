@@ -23,7 +23,7 @@ function extractLinkToObject(link) {
   return {
     href: hrefMatch[1],
     title: titleMatch[1],
-    text: textMatch[1].trim() // Trimming to remove potential extra spaces
+    text: textMatch[1].trim() // Trimming to remove potential extra spaces 
   };
 }
 
@@ -120,7 +120,7 @@ function App() {
       )}
 
       <div className={`${transitionClass}`}>
-        {currentComponent === 'Start' && <Start onPass={() => handlePass(() => setShowStart(false), () => setShowEnclosure(true))} />}
+        {currentComponent === 'Start' && <Start onPass={() => handlePass(() => setShowStart(false), () => setShowKitchen(true))} />}
         {currentComponent === 'Enclosure' && <Enclosure onPass={() => handlePass(() => setShowEnclosure(false), () => setShowCornMaze(true))} />}
         {currentComponent === 'CornMaze' && <CornMaze onPass={() => handlePass(() => setShowCornMaze(false), () => setShowCage(true))} />}
         {currentComponent === 'Cage' && <Cage onPass={() => handlePass(() => setShowCage(false), () => setShowKitchen(true))} />}

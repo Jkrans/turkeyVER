@@ -32,6 +32,7 @@ const ChallengeThree = ({ onPass }) => {
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
+
         return () => {
             // Clean-up: remove the event listener when the component is unmounted
             window.removeEventListener('scroll', handleScroll);
@@ -53,7 +54,7 @@ const ChallengeThree = ({ onPass }) => {
             // Remove styles when the component unmounts
             document.body.style.backgroundColor = '';
         };
-    }, []);
+    });
 
     useEffect(() => {
         const cipher = cipherRef.current;
