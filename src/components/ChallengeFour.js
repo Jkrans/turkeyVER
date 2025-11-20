@@ -31,7 +31,8 @@ const ChallengeFour = ({ onPass }) => {
         }
 
         fetchRiddles();
-    }, []);
+    }, [riddles]);
+
 
 
     const handleInputChange = (e) => {
@@ -120,7 +121,7 @@ const ChallengeFour = ({ onPass }) => {
             const height = Math.max(html.clientHeight, html.scrollHeight, html.offsetHeight);
             setScrollHeight(height);
             console.log("height: ", scrollHeight);
-            if (knifeIconRef) {
+            if (knifeIconRef.current) {
                 iconAnimate(knifeIconRef, 43000, scrollHeight)
             }
         }, 1000)

@@ -12,7 +12,7 @@ const corsOptions = {
     optionsSuccessStatus: 204
 };
 
-// Enable CORS with options
+// Enable CORS with options 
 app.use(cors(corsOptions));
 
 // Handle pre-flight requests for all routes
@@ -152,19 +152,19 @@ app.get('/api/stories/:id', async (req, res) => {
     }
 });
 
-// get all great turkey escape riddles
-app.get('/api/riddles/tver', async (req, res) => {
-    try {
-        // Execute the SQL query
-        const result = await db.query("SELECT * FROM riddles WHERE website = 'tver'");
-
-        // Send the result as a JSON response
-        res.json(result.rows);
-    } catch (err) {
-        // Handle any errors
-        console.error(err.message);
-        res.status(500).send('Server Error');
-    }
+// generic riddles route
+app.get('/api/riddles/:website', async (req, res) => {
+  try {
+    const { website } = req.params;
+    const result = await db.query(
+      'SELECT * FROM riddles WHERE website = $1',
+      [website]
+    );
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
 });
 
 
